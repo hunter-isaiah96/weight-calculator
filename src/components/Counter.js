@@ -8,7 +8,7 @@ class Counter extends Component {
   state = {
     loaded: [],
     totalWeight: 0,
-    availablePlates: [55, 45, 35, 25, 10, 5, 2.5, 1],
+    availablePlates: [45, 35, 25, 10, 5, 2.5, 1],
     barbell: 45
   }
   render() {
@@ -90,9 +90,9 @@ class Counter extends Component {
           direction='row'
           justify='center'
           alignItems='center'
+          style={{ marginBottom: 30 }}
           container
           item
-          style={{ marginBottom: 30 }}
         >
           <Chip
             icon={<FitnessCenterSharp />}
@@ -139,9 +139,9 @@ class Counter extends Component {
   }
   addPlate(plate) {
     this.setState(previousState => {
+      if (previousState.loaded.length === 9) return
       let loaded = [...previousState.loaded, plate]
       let totalWeight = loaded.reduce((a, b) => a + b * 2, this.state.barbell)
-
       return {
         loaded,
         totalWeight

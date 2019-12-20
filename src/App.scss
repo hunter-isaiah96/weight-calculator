@@ -1,3 +1,5 @@
+$weight-display-size: 430px;
+
 html,
 body {
   height: 100vh;
@@ -9,9 +11,10 @@ body {
 }
 
 .wrapper {
-  max-width: 510px;
+  max-width: 500px;
 }
 .weight-display {
+  max-width: $weight-display-size;
   position: relative;
   z-index: 1;
   min-height: 270px;
@@ -19,7 +22,7 @@ body {
 }
 
 .plate-wrapper {
-  width: 35px;
+  width: calc(#{$weight-display-size} / 10.2);
   overflow: hidden;
 }
 .plate {
