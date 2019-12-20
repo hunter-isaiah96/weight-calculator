@@ -14,16 +14,19 @@ body {
 .weight-display {
   position: relative;
   z-index: 1;
-  min-height: 300px;
+  min-height: 270px;
   margin: 0 auto;
 }
 
+.plate-wrapper {
+  width: 45px;
+  overflow: hidden;
+}
 .plate {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  min-height: 50px;
+  height: 100%;
   margin-right: 5px;
   border-radius: 10px;
 }
