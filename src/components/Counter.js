@@ -1,37 +1,8 @@
-import React, { Component } from 'react';
-import { Fab, Grid, GridList, Chip, Box, IconButton } from '@material-ui/core';
-import { FitnessCenterSharp, Refresh } from '@material-ui/icons';
-import posed, { PoseGroup } from 'react-pose';
+import React, { Component } from 'react'
+import { Fab, Grid, GridList, Chip, Box, IconButton } from '@material-ui/core'
+import { FitnessCenterSharp, Refresh } from '@material-ui/icons'
+import posed, { PoseGroup } from 'react-pose'
 
-// const Plate = posed.div({
-//   enter: {
-//     height: ({ plateHeight }) => (plateHeight > 50 ? plateHeight : 50),
-//     transition: {
-//       height: {
-//         ease: 'easeOut',
-//         duration: 300
-//       }
-//     }
-//   },
-//   exit: {
-//     height: 0
-//   }
-// });
-const Plate = posed.div({
-  enter: {
-    height: ({ plateHeight }) => (plateHeight > 50 ? plateHeight : 50),
-    originX: '50%',
-    originY: '50%',
-    scaleY: 1
-  },
-  exit: {
-    height: ({ plateHeight }) => (plateHeight > 50 ? plateHeight : 50),
-    transformOrigin: '50% 50%',
-    originX: '50%',
-    originY: '50%',
-    scaleY: 0
-  }
-});
 // import Button from '@material-ui/core/Button'
 class Counter extends Component {
   state = {
@@ -39,9 +10,22 @@ class Counter extends Component {
     totalWeight: 0,
     availablePlates: [55, 45, 35, 25, 10, 5, 2.5, 1],
     barbell: 45
-  };
-
+  }
   render() {
+    const Plate = posed.div({
+      enter: {
+        height: ({ plateHeight }) => (plateHeight > 50 ? plateHeight : 50),
+        originX: '50%',
+        originY: '50%',
+        scaleY: 1
+      },
+      exit: {
+        height: ({ plateHeight }) => (plateHeight > 50 ? plateHeight : 50),
+        originX: '50%',
+        originY: '50%',
+        scaleY: 0
+      }
+    })
     return (
       <Grid
         className='wrapper'
@@ -72,11 +56,10 @@ class Counter extends Component {
           >
             <Box
               className='plate'
-              border={5}
-              borderColor='background.default'
               bgcolor='primary.barbell'
               height={50}
               minWidth={45}
+              boxShadow={3}
             >
               {this.state.barbell}
             </Box>
@@ -87,16 +70,18 @@ class Counter extends Component {
                     key={index}
                     className='plate-wrapper'
                     plateHeight={25 + plate * 4}
+                    index={index}
                   >
                     <Box
                       className='plate'
                       bgcolor='primary.main'
                       color='primary'
+                      boxShadow={3}
                     >
                       {plate}
                     </Box>
                   </Plate>
-                );
+                )
               })}
             </PoseGroup>
           </Box>
@@ -111,7 +96,6 @@ class Counter extends Component {
         >
           <Chip
             icon={<FitnessCenterSharp />}
-            variant='outlined'
             color='primary'
             label={`${
               this.state.totalWeight !== 0
@@ -147,29 +131,29 @@ class Counter extends Component {
                   {plate}
                 </Fab>
               </Grid>
-            );
+            )
           })}
         </GridList>
       </Grid>
-    );
+    )
   }
   addPlate(plate) {
     this.setState(previousState => {
-      let loaded = [...previousState.loaded, plate];
-      let totalWeight = loaded.reduce((a, b) => a + b * 2, this.state.barbell);
+      let loaded = [...previousState.loaded, plate]
+      let totalWeight = loaded.reduce((a, b) => a + b * 2, this.state.barbell)
 
       return {
         loaded,
         totalWeight
-      };
-    });
+      }
+    })
   }
   resetPlates() {
     this.setState({
       loaded: [],
       totalWeight: this.state.barbell
-    });
+    })
   }
 }
 
-export default Counter;
+export default Counter
