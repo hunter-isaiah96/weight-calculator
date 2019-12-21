@@ -9,32 +9,6 @@ body {
   height: 100%;
 }
 
-.weight-display {
-  max-width: $weight-display-size;
-  position: relative;
-  z-index: 1;
-  min-height: 270px;
-  margin: 0 auto;
-}
-
-.plate-wrapper {
-  width: calc(#{$weight-display-size} / 10.2);
-  overflow: hidden;
-}
-.plate {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin-right: 5px;
-  border-radius: 10px;
-}
-
-.clip {
-  height: 50px;
-  background-color: #333;
-}
-
 .barbell {
   transform: translate(-50%, -50%);
 }
