@@ -2,17 +2,13 @@ $weight-display-size: 430px;
 
 html,
 body {
-  height: 100vh;
+  height: 100%;
 }
 
 #root {
   height: 100%;
-  display: flex;
 }
 
-.wrapper {
-  max-width: 500px;
-}
 .weight-display {
   max-width: $weight-display-size;
   position: relative;

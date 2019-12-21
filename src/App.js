@@ -1,35 +1,72 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './App.scss'
-import { Grid } from '@material-ui/core'
-import Counter from './components/Counter'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {
+  MuiThemeProvider,
+  createMuiTheme,
+  makeStyles
+} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { blueGrey, blue, grey } from '@material-ui/core/colors'
+import { Grid, Container } from '@material-ui/core'
+import { blue } from '@material-ui/core/colors'
+import { Navigation, Calculator } from './components'
 
-class App extends Component {
-  render() {
-    const theme = createMuiTheme({
-      palette: {
-        type: 'dark',
-        primary: {
-          main: blue[800],
-          barbell: blueGrey[800]
-        },
-        background: {
-          default: grey[900]
-        }
+// import Counter from './components/Counter'
+
+const App = props => {
+  const theme = createMuiTheme({
+    palette: {
+      type: 'dark',
+      primary: {
+        main: blue[500]
       }
-    })
-    return (
+    }
+  })
+
+  const useStyles = makeStyles(theme => ({
+    root: {
+      display: 'flex',
+      height: '100vh'
+    },
+    content: {
+      flexGrow: 1,
+      padding: theme.spacing(3)
+    },
+    toolbar: theme.mixins.toolbar,
+    container: {
+      display: 'flex',
+      flexDirection: 'column'
+    }
+  }))
+
+  const classes = useStyles()
+
+  return (
+    <div className={classes.root}>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        <Grid container direction='column' justify='center' alignItems='center'>
-          <Counter></Counter>
-        </Grid>
+        <Navigation></Navigation>
+        <Container className={classes.container}>
+          <div className={classes.toolbar} />
+          <Grid
+            className={classes.content}
+            justify='center'
+            alignItems='center'
+            container
+          >
+            <Router>
+              <Switch>
+                <Route path='/reverse'>Reverse</Route>
+                <Route path='/'>
+                  <Calculator></Calculator>
+                </Route>
+              </Switch>
+            </Router>
+          </Grid>
+        </Container>
       </MuiThemeProvider>
-    )
-  }
-  toggleChecked() {}
+    </div>
+  )
 }
 
 export default App
