@@ -9,7 +9,7 @@ import {
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { Grid, Container } from '@material-ui/core'
 import { blue } from '@material-ui/core/colors'
-import { Navigation, Calculator } from './components'
+import { Navigation, Calculator, ReverseCalculator } from './components'
 
 // import Counter from './components/Counter'
 
@@ -40,30 +40,32 @@ const App = props => {
   }))()
 
   return (
-    <div className={classes.root}>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navigation></Navigation>
-        <Container className={classes.container}>
-          <div className={classes.toolbar} />
-          <Grid
-            className={classes.content}
-            justify='center'
-            alignItems='center'
-            container
-          >
-            <Router>
+    <Router>
+      <div className={classes.root}>
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          <Navigation></Navigation>
+          <Container className={classes.container}>
+            <div className={classes.toolbar} />
+            <Grid
+              className={classes.content}
+              justify='center'
+              alignItems='center'
+              container
+            >
               <Switch>
-                <Route path='/reverse'>Reverse</Route>
+                <Route path='/reverse'>
+                  <ReverseCalculator></ReverseCalculator>
+                </Route>
                 <Route path='/'>
                   <Calculator></Calculator>
                 </Route>
               </Switch>
-            </Router>
-          </Grid>
-        </Container>
-      </MuiThemeProvider>
-    </div>
+            </Grid>
+          </Container>
+        </MuiThemeProvider>
+      </div>
+    </Router>
   )
 }
 

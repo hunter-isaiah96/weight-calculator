@@ -51,13 +51,14 @@ const WeightDisplay = props => {
       >
         {props.barbell}
       </Box>
-      {props.weights.map((plate, index) => {
+      {props.loadedPlates.map((plate, index) => {
         return (
           <Box
             className={classes.plate}
             height={25 + plate * 4}
             bgcolor='primary.main'
             boxShadow={2}
+            key={index}
           >
             {plate}
           </Box>
