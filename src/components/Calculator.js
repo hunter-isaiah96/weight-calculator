@@ -1,28 +1,21 @@
 import React, { useState } from 'react'
 import { TextField } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
 import { WeightDisplay } from './'
-const useStyles = makeStyles(theme => ({
-  form: {
-    width: '100%'
-  }
-}))
 
 const Calculator = () => {
-  const classes = useStyles()
-
   const [weight, setWeight] = useState('')
   const [barbell] = useState(45)
   const [weights] = useState([45, 35, 25, 10, 5, 2.5])
   const [loadedWeights, setLoadedWeights] = useState([])
+  const loadTotal = loadedWeights.reduce((a, b) => a + b * 2, barbell)
 
   const handleWeightChange = e => {
     if (e.target.value.length > 4) return
     setWeight(e.target.value)
     setLoadedWeights(
       findPlates(
-        e.target.value > weights[0] * 9 * 2
-          ? weights[0] * 9 * 2
+        e.target.value > weights[0] + barbell * 9 * 2
+          ? weights[0] + barbell * 9 * 2
           : e.target.value
       )
     )
@@ -48,7 +41,7 @@ const Calculator = () => {
   }
 
   return (
-    <form className={classes.form} noValidate autoComplete='off'>
+    <div style={{ width: '100%' }}>
       <WeightDisplay barbell={barbell} weights={loadedWeights}></WeightDisplay>
       <TextField
         id='weight'
@@ -56,14 +49,13 @@ const Calculator = () => {
         value={weight}
         onChange={handleWeightChange}
         label='Enter Weight'
-        helperText={`Weight Loaded: ${loadedWeights.reduce(
-          (a, b) => a + b * 2,
-          barbell
-        )}`}
+        helperText={`Total Load: ${loadTotal}LBS | ${Math.round(
+          loadTotal / 2.205
+        )} KG `}
         variant='outlined'
         fullWidth
       />
-    </form>
+    </div>
   )
 }
 

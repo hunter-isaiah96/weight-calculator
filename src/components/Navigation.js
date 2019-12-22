@@ -75,7 +75,7 @@ const Header = props => {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap>
-            Responsive drawer
+            Lifting Calculator
           </Typography>
         </Toolbar>
       </AppBar>

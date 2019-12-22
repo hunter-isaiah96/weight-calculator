@@ -23,7 +23,7 @@ const App = props => {
     }
   })
 
-  const useStyles = makeStyles(theme => ({
+  const classes = makeStyles(theme => ({
     root: {
       display: 'flex',
       height: '100vh'
@@ -37,9 +37,7 @@ const App = props => {
       display: 'flex',
       flexDirection: 'column'
     }
-  }))
-
-  const classes = useStyles()
+  }))()
 
   return (
     <div className={classes.root}>
