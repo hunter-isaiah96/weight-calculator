@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { Grid, Container } from '@material-ui/core'
-import { blue } from '@material-ui/core/colors'
+import { red } from '@material-ui/core/colors'
 import { Navigation, Calculator, ReverseCalculator } from './components'
 
 // import Counter from './components/Counter'
@@ -18,7 +18,7 @@ const App = props => {
     palette: {
       type: 'dark',
       primary: {
-        main: blue[500]
+        main: red[900]
       }
     }
   })
