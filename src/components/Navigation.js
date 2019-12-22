@@ -50,12 +50,20 @@ const Header = props => {
 
   const drawer = (
     <List>
-      <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+      <Link
+        to='/'
+        style={{ textDecoration: 'none', color: 'inherit' }}
+        onClick={handleDrawerToggle}
+      >
         <ListItem button>
           <ListItemText primary='Calculator' />
         </ListItem>
       </Link>
-      <Link to='/reverse' style={{ textDecoration: 'none', color: 'inherit' }}>
+      <Link
+        to='/reverse'
+        style={{ textDecoration: 'none', color: 'inherit' }}
+        onClick={handleDrawerToggle}
+      >
         <ListItem button>
           <ListItemText primary='Reverse Calculator' />
         </ListItem>
