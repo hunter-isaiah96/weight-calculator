@@ -2,29 +2,29 @@ import React, { useState } from 'react'
 import { WeightDisplay } from './'
 import { GridList, Fab, Box, Chip, IconButton } from '@material-ui/core'
 import { FitnessCenterSharp, Refresh } from '@material-ui/icons'
+import { barBell, getTotalWeightLoaded } from '../Utilities'
 
 const ReverseCalculator = () => {
   const [loadedPlates, setLoadedPlates] = useState([])
-  const barbell = 45
-  const [totalWeight, setTotalWeight] = useState(barbell)
+  const [totalWeight, setTotalWeight] = useState(barBell)
   const availablePlates = [45, 35, 25, 10, 5, 2.5]
 
   const addPlate = plate => {
     if (loadedPlates.length === 9) return
     let newLoadedPlates = [...loadedPlates, plate]
     setLoadedPlates(newLoadedPlates)
-    setTotalWeight(newLoadedPlates.reduce((a, b) => a + b * 2, barbell))
+    setTotalWeight(getTotalWeightLoaded(newLoadedPlates))
   }
 
   const resetPlates = () => {
     setLoadedPlates([])
-    setTotalWeight(barbell)
+    setTotalWeight(barBell)
   }
 
   return (
     <div style={{ width: '100%' }}>
       <WeightDisplay
-        barbell={barbell}
+        barbell={barBell}
         loadedPlates={loadedPlates}
       ></WeightDisplay>
       <Box
@@ -44,7 +44,7 @@ const ReverseCalculator = () => {
         </IconButton>
       </Box>
 
-      <GridList cellHeight={60} cols={3}>
+      <GridList cellHeight={80} cols={3}>
         {availablePlates.map((element, index) => {
           return (
             <Box

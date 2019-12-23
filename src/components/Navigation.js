@@ -7,8 +7,8 @@ import {
   Drawer,
   Hidden
 } from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { List, ListItem, ListItemText } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 
@@ -48,12 +48,16 @@ const Header = props => {
     setMobileOpen(!mobileOpen)
   }
 
+  const handleDrawerClose = () => {
+    setMobileOpen(false)
+  }
+
   const drawer = (
     <List>
       <Link
         to='/'
         style={{ textDecoration: 'none', color: 'inherit' }}
-        onClick={handleDrawerToggle}
+        onClick={handleDrawerClose}
       >
         <ListItem button>
           <ListItemText primary='Calculator' />
@@ -62,7 +66,7 @@ const Header = props => {
       <Link
         to='/reverse'
         style={{ textDecoration: 'none', color: 'inherit' }}
-        onClick={handleDrawerToggle}
+        onClick={handleDrawerClose}
       >
         <ListItem button>
           <ListItemText primary='Reverse Calculator' />

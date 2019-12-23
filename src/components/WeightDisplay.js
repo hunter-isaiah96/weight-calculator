@@ -3,6 +3,8 @@ import { Grid, Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { blueGrey } from '@material-ui/core/colors'
 
+// props: loadedPlates,
+
 const WeightDisplay = props => {
   const classes = makeStyles(theme => ({
     root: {
@@ -14,6 +16,7 @@ const WeightDisplay = props => {
     plate: {
       display: 'flex',
       width: '8%',
+      minHeight: 50,
       marginRight: '2%',
       justifyContent: 'center',
       alignItems: 'center',
@@ -54,6 +57,7 @@ const WeightDisplay = props => {
       {props.loadedPlates.map((plate, index) => {
         return (
           <Box
+            data-testid={`plate${index}`}
             className={classes.plate}
             height={25 + plate * 4}
             bgcolor='primary.main'

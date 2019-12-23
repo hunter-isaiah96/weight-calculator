@@ -13,7 +13,7 @@ import { Navigation, Calculator, ReverseCalculator } from './components'
 
 // import Counter from './components/Counter'
 
-const App = props => {
+const App = () => {
   const theme = createMuiTheme({
     palette: {
       type: 'dark',
