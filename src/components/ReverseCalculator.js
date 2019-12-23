@@ -22,7 +22,7 @@ const ReverseCalculator = () => {
   }
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%' }} data-testid='reverse-calculator'>
       <WeightDisplay
         barbell={barBell}
         loadedPlates={loadedPlates}
@@ -56,6 +56,7 @@ const ReverseCalculator = () => {
               <Fab
                 color='primary'
                 onClick={addPlate.bind(this, availablePlates[index])}
+                data-testid={`add-plate${index}`}
               >
                 {element}
               </Fab>

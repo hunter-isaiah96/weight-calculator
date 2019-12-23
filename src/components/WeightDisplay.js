@@ -8,7 +8,7 @@ import { blueGrey } from '@material-ui/core/colors'
 const WeightDisplay = props => {
   const classes = makeStyles(theme => ({
     root: {
-      height: 300,
+      height: 250,
       maxWidth: 550,
       position: 'relative',
       margin: '0 auto'

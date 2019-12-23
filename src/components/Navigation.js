@@ -58,6 +58,7 @@ const Header = props => {
         to='/'
         style={{ textDecoration: 'none', color: 'inherit' }}
         onClick={handleDrawerClose}
+        data-testid='navigation-calculator-item'
       >
         <ListItem button>
           <ListItemText primary='Calculator' />
@@ -67,6 +68,7 @@ const Header = props => {
         to='/reverse'
         style={{ textDecoration: 'none', color: 'inherit' }}
         onClick={handleDrawerClose}
+        data-testid='navigation-reverse-calculator-item'
       >
         <ListItem button>
           <ListItemText primary='Reverse Calculator' />
